@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Lab08</string>
+    <string name="title">問答小學堂</string>
+    <string name="question1_content">1+1=?</string>
+    <string name="question1_answerA">1</string>
+    <string name="question1_answerB">2</string>
+    <string name="question1_answerC">3</string>
+    <string name="question2_content">
+        Number n1 = 1;\n
+        Number n2 = 1;\n
+        Number n3 = n1+n2;\n
+        System.out.println(n3);\n
+        What is the result?</string>
+    <string name="question2_answerA">1</string>
+    <string name="question2_answerB">2</string>
+    <string name="question2_answerC">Compilation error</string>
+    <string name="question3_content">
+        String s1 = \"java\";\n
+        String s2 = \"ja\";\n
+        s2 = s2 + \"va\";\n
+        System.out.println((s1 == s2) + \" \" + (s1.equals(s2)));\n
+        What is the result?</string>
+    <string name="question3_answerA">true true</string>
+    <string name="question3_answerB">false true</string>
+    <string name="question3_answerC">false false</string>
+    <string name="question4_content">question4</string>
+    <string name="question4_answerA">Q4_ansA</string>
+    <string name="question4_answerB">Q4_ansB</string>
+    <string name="question4_answerC">Q4_ansC</string>
+    <string name="result_title">作答記錄</string>
+</resources>

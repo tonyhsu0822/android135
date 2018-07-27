@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <TextView
+        android:id="@+id/tom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TOM"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_purple"
+        android:padding="10dp"
+        android:layout_margin="16dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KEVIN"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_purple"
+        android:padding="10dp"
+        android:layout_alignTop="@id/tom"
+        android:layout_toLeftOf="@id/tom"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JOHN"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_purple"
+        android:padding="10dp"
+        android:layout_alignTop="@id/tom"
+        android:layout_toRightOf="@id/tom"/>
+
+    <TextView
+        android:id="@+id/linda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LINDA"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_orange_dark"
+        android:padding="10dp"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MARIA"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_orange_dark"
+        android:padding="10dp"
+        android:layout_alignLeft="@id/linda"
+        android:layout_above="@id/linda"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COCO"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_orange_dark"
+        android:padding="10dp"
+        android:layout_toRightOf="@id/linda"
+        android:layout_alignBottom="@id/linda"/>
+
+    <TextView
+        android:id="@+id/amy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AMY"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_blue_dark"
+        android:padding="10dp"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/jimmy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JIMMY"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_blue_dark"
+        android:padding="10dp"
+        android:layout_above="@id/amy"
+        android:layout_alignRight="@id/amy"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STEVE"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_blue_dark"
+        android:padding="10dp"
+        android:layout_above="@id/jimmy"
+        android:layout_alignRight="@id/jimmy"
+        android:layout_marginBottom="16dp"/>
+
+
+
+
+
+
+    <!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LTop"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_red_light"
+        android:textSize="32sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LBot"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_red_light"
+        android:textSize="32sp"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RTop"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_red_light"
+        android:textSize="32sp"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RBot"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_red_light"
+        android:textSize="32sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Center"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_red_light"
+        android:textSize="32sp"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LCenter"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_red_light"
+        android:textSize="32sp"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RCenter"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_red_light"
+        android:textSize="32sp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TopCenter"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_red_light"
+        android:textSize="32sp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BotCenter"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_red_light"
+        android:textSize="32sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+    -->
+
+
+
+
+    <!--
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/figure"
+        android:layout_margin="16dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_naruto"
+        android:textSize="24sp"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_blue_dark"
+        android:gravity="center"
+        android:layout_toRightOf="@id/image"
+
+        android:layout_margin="16dp"
+        android:padding="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_naruto2"
+        android:textSize="24sp"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/holo_blue_dark"
+        android:gravity="center"
+        android:layout_toRightOf="@id/image"
+        android:layout_alignBottom="@id/image"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:padding="12dp"/>
+    -->
+
+        <!--
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_kakashi"
+            android:textSize="48sp"
+            android:textColor="@color/colorBlack"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center_horizontal"
+            android:layout_centerInParent="true"
+
+            android:drawableTop="@drawable/kakashi"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_sasuke"
+            android:textSize="36sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+
+            android:onClick="layoutSwitch"/>
+        -->
+
+</RelativeLayout>

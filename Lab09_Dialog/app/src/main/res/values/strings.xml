@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lab09_Dialog</string>
+    <string-array name="alert_dialog_response">
+        <item>I know</item>
+        <item>No way</item>
+        <item>......</item>
+    </string-array>
+
+</resources>

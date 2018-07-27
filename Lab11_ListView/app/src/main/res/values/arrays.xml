@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="pokemonImages">
+        <item>@drawable/p01</item>
+        <item>@drawable/p02</item>
+        <item>@drawable/p03</item>
+        <item>@drawable/p04</item>
+        <item>@drawable/p05</item>
+        <item>@drawable/p06</item>
+        <item>@drawable/p07</item>
+        <item>@drawable/p08</item>
+        <item>@drawable/p09</item>
+        <item>@drawable/p10</item>
+        <item>@drawable/p11</item>
+        <item>@drawable/p12</item>
+        <item>@drawable/p13</item>
+        <item>@drawable/p14</item>
+        <item>@drawable/p15</item>
+        <item>@drawable/p16</item>
+        <item>@drawable/p17</item>
+        <item>@drawable/p18</item>
+        <item>@drawable/p19</item>
+        <item>@drawable/p20</item>
+    </array>
+</resources>

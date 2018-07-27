@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CourtCounterFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/et_teamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="隊名"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="0"
+            android:textSize="48sp"
+            android:layout_margin="20dp"
+            android:textColor="@android:color/black"/>
+
+        <Button
+            android:id="@+id/btn_3pt"
+            android:text="+3分球"
+            style="@style/myButtonStyle"/>
+
+        <Button
+            android:id="@+id/btn_2pt"
+            android:text="+2分球"
+            style="@style/myButtonStyle"/>
+
+        <Button
+            android:id="@+id/btn_1pt"
+            android:text="罰球"
+            style="@style/myButtonStyle"/>
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

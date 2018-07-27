@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Hello"
+        android:textSize="32sp"
+        android:textColor="@android:color/holo_red_light"
+        android:background="@android:color/holo_blue_light"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Android"
+        android:textSize="32sp"
+        android:textColor="@android:color/holo_green_light"
+        android:background="@android:color/holo_purple"
+        android:padding="50dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="bottom"
+        android:gravity="center_horizontal"
+        android:text="How are you"
+        android:textSize="32sp"
+        android:textColor="@android:color/holo_purple"
+        android:background="@android:color/background_dark"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="end"
+        android:text="Apple"
+        android:textSize="32sp"
+        android:textColor="@android:color/holo_green_light"
+        android:background="@android:color/holo_purple"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:hint="Type something"
+        android:textColorHint="@android:color/darker_gray"
+        android:maxLines="3"
+        android:background="@android:color/holo_red_dark"
+        android:paddingLeft="10sp"/>
+    -->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="To"
+        android:textSize="24sp"
+        android:padding="10dp"
+        android:maxLines="1"
+        android:layout_margin="10dp"
+
+        android:inputType="text"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Subject"
+        android:textSize="24sp"
+        android:padding="10dp"
+        android:maxLines="1"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Message"
+        android:textSize="24sp"
+        android:gravity="top"
+        android:padding="10dp"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Send"
+        android:textSize="24sp"
+        android:onClick="contextSwitch"/>
+
+    <!--
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/naruto_sd" />
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Naruto SD"
+        android:textSize="54sp"
+        android:textColor="@android:color/white"
+        android:background="#009688"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Powerful Shippuden"
+        android:textSize="32sp"
+        android:textColor="@android:color/white"
+        android:background="#009688"
+        android:gravity="center"
+        />
+    -->
+</LinearLayout>
