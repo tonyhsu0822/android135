@@ -7,13 +7,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -21,13 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int ADD_POKEMON_REQUEST = 1;
     public static final int UPDATE_POKEMON_REQUEST = 2;
-//    public static final String BUNDLE_KEY_REQUEST_CODE = "com.example.student.request_code";
-//    public static final String BUNDLE_KEY_CURRENT_MODIFIED = "com.example.student.current_modified";
-
     private static final String STATE_PMLIST = "com.example.student.pokemonList";
     private static final String STATE_CURRENT_MODIFIED_INDEX = "com.example.student.currentModifiedIndex";
+    private static final String TAG = "MainActivity";
+    private static final String FILENAME = "pokemon-list.data";
 
-    private ArrayList<Pokemon> pokemonList = new ArrayList<>();
+    private ArrayList<Pokemon> pokemonList;
     private MainListAdapter mAdapter;
 
     private int mCurrentModifiedIndex;
@@ -50,24 +54,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 畫面旋轉時讀取資料
         if(savedInstanceState != null){
             Serializable ser = savedInstanceState.getSerializable(STATE_PMLIST);
             if(ser != null && ser instanceof ArrayList){
 //                Log.d("onRestoreInstanceState", "got saved list");
-                pokemonList = (ArrayList)ser;
+                pokemonList = (ArrayList<Pokemon>)ser;
             }
         }
 
+        // 重新開啟app時讀取資料
+        if(!loadData()){
+            pokemonList = new ArrayList<>();
+        }
+
         initListView();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-
-        outState.putSerializable(STATE_PMLIST, pokemonList);
-        outState.putInt(STATE_CURRENT_MODIFIED_INDEX, mCurrentModifiedIndex);
-
-        super.onSaveInstanceState(outState);
     }
 
     private void initListView(){
@@ -111,6 +112,60 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         });
+    }
+
+    // 離開app時儲存資料
+    @Override
+    protected void onStop() {
+        saveData();
+        super.onStop();
+    }
+
+    private void saveData(){
+        try{
+            // [openFileOutput()] inherit from class [Context], superclass of [Activity]
+            FileOutputStream fos = openFileOutput(FILENAME, MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(pokemonList);
+
+            fos.close();
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // return true if everything goes right
+    // return false if file not found or other io exception was thrown
+    private boolean loadData(){
+        try{
+            // [openFileInput()] inherit from class [Context]
+            FileInputStream fis = openFileInput(FILENAME);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            pokemonList = (ArrayList)ois.readObject();
+
+            fis.close();
+            ois.close();
+        } catch(FileNotFoundException e){
+            e.printStackTrace();
+            return false;
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    // 畫面旋轉時儲存資料
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        outState.putSerializable(STATE_PMLIST, pokemonList);
+        outState.putInt(STATE_CURRENT_MODIFIED_INDEX, mCurrentModifiedIndex);
+
+        super.onSaveInstanceState(outState);
     }
 
     @Override
