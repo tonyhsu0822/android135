@@ -12,7 +12,6 @@ public class Coffee implements Serializable{
             R.drawable.coffee_latte,
             R.drawable.coffee_macchiato,
             R.drawable.coffee_mocha,
-            R.drawable.empty
     };
 
     private static String[] coffeeNames = {
@@ -20,13 +19,12 @@ public class Coffee implements Serializable{
             "latte",
             "macchiato",
             "mocha",
-            "no selection"
     };
 
-    private static Coffee[] coffeeSamples = new Coffee[5];
+    private static Coffee[] coffeeSamples = new Coffee[4];
 
     static {
-        for(int i = 0; i < coffeeImages.length; i++){
+        for(int i = 0; i < coffeeSamples.length; i++){
             coffeeSamples[i] = new Coffee(coffeeImages[i], coffeeNames[i]);
         }
     }
@@ -70,5 +68,9 @@ public class Coffee implements Serializable{
 
     public int getPrice(){
         return mPrice;
+    }
+
+    public String toString(){
+        return mName;
     }
 }

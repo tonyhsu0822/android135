@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -25,7 +26,9 @@ public class MyDialogFragment extends DialogFragment {
     private EditText et_price;
     private MySpinnerAdapter mAdapter;
 
-    private Coffee mSelectedCoffeeSample;
+    private static final String TAG = "MyDialogFragment";
+    private int mSelectedIndex;
+//    private Coffee mSelectedCoffeeSample;
 
     public MyDialogFragment() {
         // Required empty public constructor
@@ -56,7 +59,8 @@ public class MyDialogFragment extends DialogFragment {
                         try {
                             int price = Integer.parseInt(strPrice);
                             if(activity instanceof CoffeeInterface){
-                                Coffee coffee = new Coffee(mSelectedCoffeeSample, price);
+//                                Log.d(TAG, mSelectedCoffeeSample.toString());
+                                Coffee coffee = new Coffee(Coffee.getCoffeeSampleOf(mSelectedIndex), price);
                                 ((CoffeeInterface) activity).addCoffee(coffee);
                             }
                         } catch (NumberFormatException e) {
@@ -86,22 +90,25 @@ public class MyDialogFragment extends DialogFragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mSelectedCoffeeSample = Coffee.getCoffeeSampleOf(position);
+//                Log.d(TAG, "select" + position);
+                mSelectedIndex = position;
+//                mSelectedCoffeeSample = Coffee.getCoffeeSampleOf(position);
             }
 
             // if the spinner has no item
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                mSelectedCoffeeSample = Coffee.getCoffeeSampleOf(0);
+//                Log.d(TAG, "nothing selected");
+//                mSelectedIndex = 0;
+//                mSelectedCoffeeSample = Coffee.getCoffeeSampleOf(0);
             }
         });
-        spinner.setSelection(Coffee.getCoffeeSamples().length);
 
         Bundle bundle;
         if((bundle = getArguments()) != null){
             Coffee coffee = (Coffee)bundle.getSerializable(
                                         MainActivity.BUNDLE_KEY_SELECTED_COFFEE);
-            et_price.setText(coffee.getPrice());
+            et_price.setText(String.valueOf(coffee.getPrice()));
             // TODO set selection of spinner
         }
     }

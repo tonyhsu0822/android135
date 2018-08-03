@@ -31,7 +31,7 @@ public class MySpinnerAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        Log.d("getCount()", String.valueOf(mCoffeeSamples.length));
+//        Log.d("getCount()", String.valueOf(mCoffeeSamples.length));
         return mCoffeeSamples.length;
     }
 
@@ -47,19 +47,10 @@ public class MySpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View convertView, ViewGroup parent) {
+//        Log.d("Hello", String.valueOf(i));
         View view = mActivity.getLayoutInflater().inflate(R.layout.layout_spinner, null);
-        //
-//        if(i == (getCount() - 1)){
-//            view.setVisibility(View.INVISIBLE);
-//            return view;
-//        }
 
-        Coffee coffee;
-        if(i >= 0 && i < getCount()) {
-             coffee = mCoffeeSamples[i];
-        } else {
-            coffee = Coffee.getCoffeeSampleOf(0);
-        }
+        Coffee coffee = mCoffeeSamples[i];
         TextView tv = view.findViewById(R.id.tv_coffee_name);
         tv.setText(coffee.getName());
         ImageView iv = view.findViewById(R.id.iv_coffee_image);
