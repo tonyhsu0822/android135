@@ -1,6 +1,7 @@
 package com.example.student.lab12_spinner;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -8,11 +9,11 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 /**
@@ -24,22 +25,23 @@ public class MyDialogFragment extends DialogFragment {
     private EditText et_price;
     private MySpinnerAdapter mAdapter;
 
+    // TODO initialize default selected coffee
+    private Coffee mSelectedCoffeeSample;
+
     public MyDialogFragment() {
         // Required empty public constructor
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_my_dialog, container, false);
-//    }
+    interface CoffeeInterface {
+        void addCoffee(Coffee coffee);
+    }
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_my_dialog, null);
+        final Activity activity = getActivity();
+        View view = activity.getLayoutInflater().inflate(R.layout.fragment_my_dialog, null);
 
         initView(view);
         initSpinner();
@@ -51,15 +53,25 @@ public class MyDialogFragment extends DialogFragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        String strPrice = et_price.getText().toString();
+                        try {
+                            int price = Integer.parseInt(strPrice);
+                            if(activity instanceof CoffeeInterface){
+                                Coffee coffee = new Coffee(mSelectedCoffeeSample, price);
+                                ((CoffeeInterface) activity).addCoffee(coffee);
+                            }
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(activity,
+                                    "Illegal or empty price", Toast.LENGTH_LONG).show();
 
+                            // dialog close after button clicked
+//                            et_price.setHint("Illegal price");
+//                            et_price.setBackgroundColor(
+//                                              getResources().getColor(R.color.red));
+                        }
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
+                .setNegativeButton("Cancel", null);
 
         return builder.create();
     }
@@ -72,6 +84,17 @@ public class MyDialogFragment extends DialogFragment {
     private void initSpinner() {
         mAdapter = new MySpinnerAdapter(getActivity());
         spinner.setAdapter(mAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mSelectedCoffeeSample = Coffee.getCoffeeSampleOf(position);
+            }
 
+            // TODO what is this?
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                mSelectedCoffeeSample = Coffee.getCoffeeSampleOf(0);
+            }
+        });
     }
 }

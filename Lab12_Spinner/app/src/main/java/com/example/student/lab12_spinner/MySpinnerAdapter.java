@@ -1,28 +1,34 @@
 package com.example.student.lab12_spinner;
 
 import android.app.Activity;
-import android.content.res.TypedArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MySpinnerAdapter extends BaseAdapter {
 
     private Activity mActivity;
-    private TypedArray mCoffeeImages;
-    private String[] mCoffeeNames;
+    private Coffee[] mCoffeeSamples;
+//    private TypedArray mCoffeeImages;
+//    private String[] mCoffeeNames;
 
     public MySpinnerAdapter(Activity activity){
         mActivity = activity;
-        mCoffeeImages = activity.getResources().obtainTypedArray(R.array.coffee_drawables);
-        mCoffeeNames = activity.getResources().getStringArray(R.array.coffee_names);
+        mCoffeeSamples = Coffee.getCoffeeSamples();
+
+//        Resources resources = activity.getResources();
+//        mCoffeeImages = resources.obtainTypedArray(R.array.coffee_drawables);
+//        mCoffeeNames = resources.getStringArray(R.array.coffee_names);
     }
 
     @Override
     public int getCount() {
-        return mCoffeeImages.length();
+        return mCoffeeSamples.length;
     }
 
     @Override
@@ -35,14 +41,27 @@ public class MySpinnerAdapter extends BaseAdapter {
         return 0;
     }
 
+    private static List<View> viewHolder = new ArrayList<>();
+
     @Override
     public View getView(int i, View convertView, ViewGroup parent) {
-        View view = mActivity.getLayoutInflater().inflate(R.layout.layout_spinner, null);
+        View view;
+        view = mActivity.getLayoutInflater().inflate(R.layout.layout_spinner, null);
+//        if(i < viewHolder.size()){
+//            view = viewHolder.get(i);
+//        } else if (i == viewHolder.size()){
+//            view = mActivity.getLayoutInflater().inflate(R.layout.layout_spinner, null);
+//            viewHolder.add(view);
+//        } else {
+//            view = mActivity.getLayoutInflater().inflate(R.layout.layout_spinner, null);
+//        }
+
+        Coffee coffee = mCoffeeSamples[i];
 
         TextView tv = view.findViewById(R.id.tv_coffee_name);
-        tv.setText(mCoffeeNames[i]);
+        tv.setText(coffee.getName());
         ImageView iv = view.findViewById(R.id.iv_coffee_image);
-        iv.setImageDrawable(mCoffeeImages.getDrawable(i));
+        iv.setImageResource(coffee.getImageId());
 
         return view;
     }
