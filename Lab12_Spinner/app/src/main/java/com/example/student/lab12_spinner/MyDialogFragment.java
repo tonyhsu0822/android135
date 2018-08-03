@@ -25,7 +25,6 @@ public class MyDialogFragment extends DialogFragment {
     private EditText et_price;
     private MySpinnerAdapter mAdapter;
 
-    // TODO initialize default selected coffee
     private Coffee mSelectedCoffeeSample;
 
     public MyDialogFragment() {
@@ -64,7 +63,7 @@ public class MyDialogFragment extends DialogFragment {
                             Toast.makeText(activity,
                                     "Illegal or empty price", Toast.LENGTH_LONG).show();
 
-                            // dialog close after button clicked
+                            // dialog close after button clicked, so these are not effected
 //                            et_price.setHint("Illegal price");
 //                            et_price.setBackgroundColor(
 //                                              getResources().getColor(R.color.red));
@@ -90,11 +89,20 @@ public class MyDialogFragment extends DialogFragment {
                 mSelectedCoffeeSample = Coffee.getCoffeeSampleOf(position);
             }
 
-            // TODO what is this?
+            // if the spinner has no item
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 mSelectedCoffeeSample = Coffee.getCoffeeSampleOf(0);
             }
         });
+        spinner.setSelection(Coffee.getCoffeeSamples().length);
+
+        Bundle bundle;
+        if((bundle = getArguments()) != null){
+            Coffee coffee = (Coffee)bundle.getSerializable(
+                                        MainActivity.BUNDLE_KEY_SELECTED_COFFEE);
+            et_price.setText(coffee.getPrice());
+            // TODO set selection of spinner
+        }
     }
 }

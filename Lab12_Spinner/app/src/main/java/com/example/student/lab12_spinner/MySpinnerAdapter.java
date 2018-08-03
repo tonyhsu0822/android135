@@ -1,6 +1,9 @@
 package com.example.student.lab12_spinner;
 
 import android.app.Activity;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -28,6 +31,7 @@ public class MySpinnerAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        Log.d("getCount()", String.valueOf(mCoffeeSamples.length));
         return mCoffeeSamples.length;
     }
 
@@ -41,23 +45,21 @@ public class MySpinnerAdapter extends BaseAdapter {
         return 0;
     }
 
-    private static List<View> viewHolder = new ArrayList<>();
-
     @Override
     public View getView(int i, View convertView, ViewGroup parent) {
-        View view;
-        view = mActivity.getLayoutInflater().inflate(R.layout.layout_spinner, null);
-//        if(i < viewHolder.size()){
-//            view = viewHolder.get(i);
-//        } else if (i == viewHolder.size()){
-//            view = mActivity.getLayoutInflater().inflate(R.layout.layout_spinner, null);
-//            viewHolder.add(view);
-//        } else {
-//            view = mActivity.getLayoutInflater().inflate(R.layout.layout_spinner, null);
+        View view = mActivity.getLayoutInflater().inflate(R.layout.layout_spinner, null);
+        //
+//        if(i == (getCount() - 1)){
+//            view.setVisibility(View.INVISIBLE);
+//            return view;
 //        }
 
-        Coffee coffee = mCoffeeSamples[i];
-
+        Coffee coffee;
+        if(i >= 0 && i < getCount()) {
+             coffee = mCoffeeSamples[i];
+        } else {
+            coffee = Coffee.getCoffeeSampleOf(0);
+        }
         TextView tv = view.findViewById(R.id.tv_coffee_name);
         tv.setText(coffee.getName());
         ImageView iv = view.findViewById(R.id.iv_coffee_image);

@@ -1,22 +1,29 @@
 package com.example.student.lab12_spinner;
 
-public class Coffee {
+import java.io.Serializable;
+
+public class Coffee implements Serializable{
+
+    // to add new coffee sample, add new item to both array respectively,
+    // and modify the size of [coffeeSamples] array
 
     private static int[] coffeeImages = {
             R.drawable.coffee_cappuccino,
             R.drawable.coffee_latte,
             R.drawable.coffee_macchiato,
-            R.drawable.coffee_mocha
+            R.drawable.coffee_mocha,
+            R.drawable.empty
     };
 
     private static String[] coffeeNames = {
             "cappuccino",
             "latte",
             "macchiato",
-            "mocha"
+            "mocha",
+            "no selection"
     };
 
-    private static Coffee[] coffeeSamples = new Coffee[4];
+    private static Coffee[] coffeeSamples = new Coffee[5];
 
     static {
         for(int i = 0; i < coffeeImages.length; i++){

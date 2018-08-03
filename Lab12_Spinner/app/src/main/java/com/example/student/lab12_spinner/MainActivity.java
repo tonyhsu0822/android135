@@ -1,22 +1,33 @@
 package com.example.student.lab12_spinner;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
                 implements MyDialogFragment.CoffeeInterface {
 
-//    private ListView mCoffeeList;
+    public static final String BUNDLE_KEY_SELECTED_COFFEE = "com.example.student.selected_coffee";
+    public static final String TAG = "MainActivity";
+
     private MyListAdapter mAdapter;
     private ArrayList<Coffee> mCoffeeList;
+    private static final String DATA_FILENAME = "coffee_list.data";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,31 +40,91 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new MyDialogFragment().show(getSupportFragmentManager(), "tag");
+                new MyDialogFragment().show(getSupportFragmentManager(), TAG);
             }
         });
 
-        mCoffeeList = new ArrayList<>();
-//        initView();
+        if(mCoffeeList == null && !loadData()){
+            mCoffeeList = new ArrayList<>();
+        }
         initListView();
     }
-
-//    private void initView(){
-//
-//    }
 
     private void initListView(){
         ListView listView = findViewById(R.id.main_list_view);
         mAdapter = new MyListAdapter(this, mCoffeeList);
         listView.setAdapter(mAdapter);
         listView.setEmptyView(findViewById(R.id.tv_empty));
-        // TODO setOnItemClickListener
+        listView.setOnItemClickListener(this.new OnItemClickedListener());
+    }
+
+    @Override
+    protected void onStop() {
+        saveData();
+        super.onStop();
+    }
+
+    private void saveData() {
+        Log.d(TAG, "save data");
+        try {
+            ObjectOutputStream os = new ObjectOutputStream(
+                    openFileOutput(DATA_FILENAME, MODE_PRIVATE));
+            os.writeObject(mCoffeeList);
+            os.close();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    // return false if exception was thrown
+    // return true if everything goes well
+    private boolean loadData(){
+        Log.d(TAG, "load data");
+        try {
+            ObjectInputStream is = new ObjectInputStream(
+                                        openFileInput(DATA_FILENAME));
+            mCoffeeList = (ArrayList<Coffee>)is.readObject();
+            is.close();
+        } catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     @Override
     public void addCoffee(Coffee coffee) {
         mCoffeeList.add(coffee);
         mAdapter.notifyDataSetChanged();
+    }
+
+    class OnItemClickedListener implements AdapterView.OnItemClickListener{
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, final int i, long id) {
+            new AlertDialog.Builder(MainActivity.this)
+                    .setMessage("do what?")
+                    .setPositiveButton("modify", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable(BUNDLE_KEY_SELECTED_COFFEE, mCoffeeList.get(i));
+                            MyDialogFragment fragment = new MyDialogFragment();
+                            // pass the selected coffee to fragment
+                            fragment.setArguments(bundle);
+                            fragment.show(getSupportFragmentManager(), TAG);
+                        }
+                    })
+                    .setNegativeButton("cancel", null)
+                    .setNeutralButton("delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mCoffeeList.remove(i);
+                            mAdapter.notifyDataSetChanged();
+                        }
+                    })
+                    .show();
+        }
     }
 
     @Override
