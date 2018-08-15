@@ -4,38 +4,8 @@ import java.io.Serializable;
 
 public class Coffee implements Serializable{
 
-    // to add new coffee sample, add new item to both array respectively,
-    // and modify the size of [coffeeSamples] array
 
-    private static int[] coffeeImages = {
-            R.drawable.coffee_cappuccino,
-            R.drawable.coffee_latte,
-            R.drawable.coffee_macchiato,
-            R.drawable.coffee_mocha,
-    };
 
-    private static String[] coffeeNames = {
-            "cappuccino",
-            "latte",
-            "macchiato",
-            "mocha",
-    };
-
-    private static Coffee[] coffeeSamples = new Coffee[4];
-
-    static {
-        for(int i = 0; i < coffeeSamples.length; i++){
-            coffeeSamples[i] = new Coffee(coffeeImages[i], coffeeNames[i]);
-        }
-    }
-
-    public static Coffee[] getCoffeeSamples(){
-        return coffeeSamples;
-    }
-
-    public static Coffee getCoffeeSampleOf(int i) {
-        return coffeeSamples[i];
-    }
 // static coffee samples
 //==================================================
 // non-static
@@ -45,14 +15,14 @@ public class Coffee implements Serializable{
     private int mPrice;
 
     // constructor for coffee samples, with illegal price
-    private Coffee(int image, String name){
+    Coffee(int image, String name){
         mImageId = image;
         mName = name;
         mPrice = -1;
     }
 
     // construct with a coffee sample
-    Coffee(Coffee coffee, int price){
+    Coffee(Coffee coffee, int price) {
         mImageId = coffee.getImageId();
         mName = coffee.getName();
         mPrice = price;
@@ -70,7 +40,17 @@ public class Coffee implements Serializable{
         return mPrice;
     }
 
+    @Override
     public String toString(){
         return mName;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(!(obj instanceof Coffee))
+            return false;
+
+        Coffee coffee = (Coffee) obj;
+        return (mImageId == coffee.getImageId()) && (mName.equals( coffee.getName() ));
     }
 }

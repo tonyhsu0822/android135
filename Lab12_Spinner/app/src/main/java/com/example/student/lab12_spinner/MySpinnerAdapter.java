@@ -22,7 +22,7 @@ public class MySpinnerAdapter extends BaseAdapter {
 
     public MySpinnerAdapter(Activity activity){
         mActivity = activity;
-        mCoffeeSamples = Coffee.getCoffeeSamples();
+        mCoffeeSamples = Coffees.getCoffeeSamples();
 
 //        Resources resources = activity.getResources();
 //        mCoffeeImages = resources.obtainTypedArray(R.array.coffee_drawables);
