@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Coffee implements Serializable{
 
-
+    private static final long serialVersionUID = 1L;
 
 // static coffee samples
 //==================================================
