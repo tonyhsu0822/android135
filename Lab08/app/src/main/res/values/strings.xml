@@ -1,25 +1,31 @@
 <resources>
     <string name="app_name">Lab08</string>
-    <string name="title">問答小學堂</string>
+    <string name="title">Java問答小學堂</string>
     <string name="question1_content">1+1=?</string>
     <string name="question1_answerA">1</string>
     <string name="question1_answerB">2</string>
     <string name="question1_answerC">3</string>
     <string name="question2_content">
-        Number n1 = 1;\n
-        Number n2 = 1;\n
-        Number n3 = n1+n2;\n
-        System.out.println(n3);\n
-        What is the result?</string>
+        <![CDATA[
+        <font color="#ff8000">Number</font> n1 = <font color="cyan">1</font>;<br>
+        <font color="#ff8000">Number</font> n2 = <font color="cyan">1</font>;<br>
+        <font color="#ff8000">Number</font> n3 = n1 + n2;<br>
+        System.out.println(n3);<br>
+        <br>
+        <i>What is the result?</i>
+        ]]></string>
     <string name="question2_answerA">1</string>
     <string name="question2_answerB">2</string>
     <string name="question2_answerC">Compilation error</string>
     <string name="question3_content">
-        String s1 = \"java\";\n
-        String s2 = \"ja\";\n
-        s2 = s2 + \"va\";\n
-        System.out.println((s1 == s2) + \" \" + (s1.equals(s2)));\n
-        What is the result?</string>
+        <![CDATA[
+        <font color="#ff8000">String</font> s1 = <font color="#009933">&quot;java&quot;</font>;<br>
+        <font color="#ff8000">String</font> s2 = <font color="#009933">&quot;ja&quot;</font>;<br>
+        s2 = s2 + <font color="#009933">&quot;va&quot;</font>;<br>
+        System.out.println((s1 == s2) + &quot; &quot; + (s1.equals(s2)));<br>
+        <br>
+        <i>What is the result?</i>
+        ]]></string>
     <string name="question3_answerA">true true</string>
     <string name="question3_answerB">false true</string>
     <string name="question3_answerC">false false</string>

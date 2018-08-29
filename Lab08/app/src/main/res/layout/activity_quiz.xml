@@ -30,13 +30,30 @@
         android:layout_weight="1"
         layout="@layout/answer_set"/>
 
-    <Button
-        android:id="@+id/btn_next"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="next"
-        android:onClick="nextQuestion"
-        android:enabled="false"/>
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="back"
+            android:onClick="lastQuestion"
+            android:enabled="true"/>
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="next"
+            android:onClick="nextQuestion"
+            android:enabled="false"/>
+
+    </LinearLayout>
 
 </LinearLayout>

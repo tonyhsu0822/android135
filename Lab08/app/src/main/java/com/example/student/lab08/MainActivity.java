@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         // if the target activity already existed in activity stack
         // re-order it to foreground
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
     }
 }

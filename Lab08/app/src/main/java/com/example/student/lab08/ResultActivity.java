@@ -38,26 +38,7 @@ public class ResultActivity extends AppCompatActivity {
                         .append("\n");
             }
         }
-        // hard-coding
-//        String ans1 = bundle.getString(QuizActivity.BUNDLE_KEY_ANSWER1, null);
-//        String ans2 = bundle.getString(QuizActivity.BUNDLE_KEY_ANSWER2, null);
-//        String ans3 = bundle.getString(QuizActivity.BUNDLE_KEY_ANSWER3, null);
 
-
-//        for(int i = 0, qNum = 1; i < ans.length; i++, qNum++){
-//            sb.append(qNum + ". ")
-//                    .append(ans[i])
-//                    .append("\n");
-//        }
-
-//            sb.append("1. ")
-//                    .append(ans1)
-//                    .append("\n")
-//                    .append("2. ")
-//                    .append(ans2)
-//                    .append("\n")
-//                    .append("3. ")
-//                    .append(ans3);
         TextView tv_result = findViewById(R.id.tv_result);
         tv_result.setText(sb);
     }
